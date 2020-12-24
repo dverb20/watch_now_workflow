@@ -41,10 +41,10 @@ def main(wf):
                 autocomplete=r['title'],
                 icon=iconPath
             )
-            r.setvar('streamoptions',json.dumps(newItems))
-            r.setvar('movie',r['title'])
-            r.setvar('year',r['original_release_year'])
-            r.setvar('type',type)
+            wf.setvar('streamoptions',json.dumps(newItems))
+            wf.setvar('movie',r['title'])
+            wf.setvar('year',r['original_release_year'])
+            wf.setvar('type',type)
             #wf.setvar("stream-"+str(id)],json.dumps(newItems))
             # log.debug(json.dumps(newItems))
             # r.setvar('streamoptions',json.dumps(newItems))
