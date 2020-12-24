@@ -33,6 +33,7 @@ def main(wf):
                 iconPath = 'img/filmicon.png'
                 type = 'movie'
             id = r['id']
+            releaseYear = r['original_release_year']
             r = wf.add_item(
                 title=r['title'],
                 subtitle="Released "+str(r['original_release_year']),
@@ -42,81 +43,11 @@ def main(wf):
                 icon=iconPath
             )
             r.setvar('streamoptions',json.dumps(newItems))
-            r.setvar('movie',r['title'])
-            r.setvar('year',r['original_release_year'])
+            r.setvar('movie',r.title)
+            r.setvar('year',releaseYear)
             r.setvar('type',type)
-            #wf.setvar("stream-"+str(id)],json.dumps(newItems))
-            # log.debug(json.dumps(newItems))
-            # r.setvar('streamoptions',json.dumps(newItems))
 
     wf.send_feedback()
-
-# def main(wf):
-#     #myProviders = wf.args[1]
-#     providers = getProviders()
-#     movie = (wf.args[0]).replace(" ","+")
-#     justWatchUrl = "https://apis.justwatch.com/content/titles/en_US/popular?language=en&body=%7B%22page_size%22:5,%22page%22:1,%22query%22:%22"+movie+"%22,%22content_types%22:[%22show%22,%22movie%22]%7D"
-#
-#     payload = ""
-#     headers = {
-#         'cache-control': "no-cache",
-#         }
-#
-#     response = requests.request("GET", justWatchUrl, data=payload, headers=headers)
-#
-#     #omdbResponse
-#
-#     data = {}
-#     data['items'] = []
-#
-#     for r in response.json()['items']:
-#         streams = {}
-#         streams['items'] = []
-#         index = 0
-#         if 'offers' in r:
-#             for o in r['offers']:
-#                 if o['monetization_type'] == "flatrate" and o['presentation_type'] in presentation:
-#                     providerIds = [prov['id'] for prov in providers]
-#                     if o['provider_id'] in providerIds:
-#                         provInfo = getProviderById(providers,o['provider_id'])
-#                         stream = {
-#                             'uid': o['provider_id'],
-#                             'title': provInfo['name'],
-#                             'subtitle': "Quality "+o['presentation_type'].upper(),
-#                             'arg': o['urls']['standard_web'],
-#                             'valid': "true",
-#                             'icon': {
-#                                 'path': provInfo['iconpath']
-#                             },
-#                             'text': {
-#                                 'copy': o['urls']['standard_web']
-#                             }
-#                         }
-#                         streams['items'].append(stream)
-#                 index = index+1
-#
-#         iconPath = ""
-#         if r['object_type'] == 'show':
-#             iconPath = 'img/tv.png'
-#         else:
-#             iconPath = 'img/filmicon.png'
-#         val = {
-#             'uid': r['title'],
-#             'title': r['title'],
-#             'subtitle': "Released "+str(r['original_release_year']),
-#             'arg': "Streams to watch!",
-#             'valid': "true",
-#             'autocomplete': r['title'],
-#             'icon': {
-#                 'path': iconPath
-#             },
-#             'variables': {
-#                 'streamoptions': json.dumps(streams)
-#             }
-#         }
-#         data['items'].append(val)
-#
-#     print json.dumps(data)
 
 def formatJsonItems(streams):
     items = []

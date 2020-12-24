@@ -10,9 +10,8 @@ ROTTEN_TOMATOES_SEARCH_URL = 'http://rottentomatoes.com/search/?search='
 def main(wf):
     streams = os.environ['streamoptions']
 
-    search_omdb_info(os.environ['movie'],os.environ['year'],os.environ['type'])
-    omdb_info = get_omdb_info()
-    log.debug(omdb_info)
+    imdbId = search_omdb_info(os.environ['movie'],os.environ['year'],os.environ['type'])
+    omdb_info = get_omdb_info(imdbId)
     if omdb_info['Response'] == 'False':
         wf.add_item(title='Ratings details not found.')
     else:
@@ -74,10 +73,13 @@ def convertJsonToItems(wf,streams):
 
 def search_omdb_info(movie,year,type):
     url = OMDB_API_URL
-    params = dict(i=imdbId, tomatoes=True, apikey=os.environ['omdb_api_key'])
+    params = dict(s=movie, y=year, type=type, apikey=os.environ['omdb_api_key'])
     response = web.get(url, params).json()
-    log.debug(response)
-    #return response
+    imdbId = -1
+    if response['Response'] == 'True':
+        imdbId = response['Search'][0]['imdbID']
+
+    return imdbId
 
 def get_omdb_info(imdbId):
     url = OMDB_API_URL
