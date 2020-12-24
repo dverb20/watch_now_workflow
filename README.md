@@ -1,4 +1,4 @@
-# Find streams for any movie or show!
+# Alred - Find streams for any movie or show!
 Alfred workflow to find streaming services for any movie or series
 
 ![Demo](https://raw.githubusercontent.com/dverb20/watch_now_workflow/main/demo.gif)
