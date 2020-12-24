@@ -40,60 +40,13 @@
 	<key>createdby</key>
 	<string>dverb</string>
 	<key>description</key>
-	<string></string>
+	<string>Search for movies or TV shows to find which platforms they are streaming on!</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
 	<string>Watch Now</string>
 	<key>objects</key>
 	<array>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<true/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>escaping</key>
-				<integer>68</integer>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>Gathering info for {query}</string>
-				<key>script</key>
-				<string>python showstreams.py</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string>Gathering info for {query}</string>
-				<key>title</key>
-				<string>Gathering info for {query}</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>B400BCE4-1E6F-4346-9F29-A7A21A377F39</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -163,9 +116,59 @@
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Gathering info for {query}</string>
+				<key>script</key>
+				<string>python showstreams.py</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Gathering info for {query}</string>
+				<key>title</key>
+				<string>Gathering info for {query}</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>B400BCE4-1E6F-4346-9F29-A7A21A377F39</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
 	</array>
 	<key>readme</key>
-	<string></string>
+	<string>More details at https://github.com/dverb20/watch_now_workflow
+Requires Python
+
+I use Microsoft Edge for streaming but users should pick their favorite browser!</string>
 	<key>uidata</key>
 	<dict>
 		<key>1CFEEA2D-0D40-4D9E-8195-5DFB7D337160</key>
@@ -195,8 +198,10 @@
 		<key>omdb_api_key</key>
 		<string>1bf8d40a</string>
 	</dict>
+	<key>variablesdontexport</key>
+	<array/>
 	<key>version</key>
-	<string></string>
+	<string>1.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/dverb20</string>
 </dict>
