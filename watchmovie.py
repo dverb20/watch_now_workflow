@@ -16,7 +16,7 @@ def main(wf):
         wf.send_feedback()
         return 0
     if len(response['items']) is 0:
-        wf.add_item(title='Nothing was found.')
+        wf.add_item(title='No titles were found. Try another query')
     else:
         for r in response['items']:
             if 'offers' in r:
