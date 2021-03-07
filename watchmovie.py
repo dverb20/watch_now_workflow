@@ -1,8 +1,7 @@
-import requests
 import sys
 import json
 import re
-from workflow import Workflow3
+from workflow import Workflow3, web
 
 presentation = ["hd", "4k"]
 
@@ -16,12 +15,10 @@ def main(wf):
             subtitle='Please check your internet connection.')
         wf.send_feedback()
         return 0
-    if 'status_code' in response:
+    if len(response['items']) is 0:
         wf.add_item(title='Nothing was found.')
     else:
-        if not response.json()['items']:
-            wf.add_item(title='Nothing was found.')
-        for r in response.json()['items']:
+        for r in response['items']:
             if 'offers' in r:
                 newItems = formatJsonItems(r['offers'])
             iconPath = ""
@@ -120,10 +117,7 @@ def get_omdb_info(imdb_id):
 
 def get_justwatch_info(movie):
     justWatchUrl = "https://apis.justwatch.com/content/titles/en_US/popular?language=en&body=%7B%22page_size%22:5,%22page%22:1,%22query%22:%22"+movie+"%22,%22content_types%22:[%22show%22,%22movie%22]%7D"
-    headers = {
-        'cache-control': "no-cache",
-        }
-    return requests.request("GET", justWatchUrl, data="", headers=headers)
+    return web.get(justWatchUrl).json()
 
 
 if __name__ == "__main__":
