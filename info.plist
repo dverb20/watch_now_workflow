@@ -10,11 +10,62 @@
 	<dict>
 		<key>1CFEEA2D-0D40-4D9E-8195-5DFB7D337160</key>
 		<array/>
+		<key>484DE2C4-FDF5-4535-A4EC-D934C1A58DEA</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>CD01D83F-EF8D-47BE-BAD9-A94DCF2DECC4</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>888535ED-1A0D-4A63-8201-393BD397B36B</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>484DE2C4-FDF5-4535-A4EC-D934C1A58DEA</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>B400BCE4-1E6F-4346-9F29-A7A21A377F39</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
+				<string>B7AE549E-EB28-4518-88A7-842B3E7E9760</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>B7AE549E-EB28-4518-88A7-842B3E7E9760</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
 				<string>1CFEEA2D-0D40-4D9E-8195-5DFB7D337160</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>261B7E35-738A-4CF7-A6F0-0D55403D1C6B</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>A383CDDD-CA91-4D79-94F1-04D4E974B9B2</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -44,7 +95,7 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Watch Now</string>
+	<string>WatchNow</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -100,6 +151,25 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>browser</key>
+				<string>com.microsoft.edgemac</string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>1CFEEA2D-0D40-4D9E-8195-5DFB7D337160</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -147,19 +217,79 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>browser</key>
-				<string>com.microsoft.edgemac</string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>{query}</string>
-				<key>utf8</key>
-				<true/>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string>{query}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>1</integer>
+						<key>matchstring</key>
+						<string>go-back</string>
+						<key>outputlabel</key>
+						<string>browser</string>
+						<key>uid</key>
+						<string>261B7E35-738A-4CF7-A6F0-0D55403D1C6B</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>else</string>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
+			<string>alfred.workflow.utility.conditional</string>
 			<key>uid</key>
-			<string>1CFEEA2D-0D40-4D9E-8195-5DFB7D337160</string>
+			<string>B7AE549E-EB28-4518-88A7-842B3E7E9760</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>watch-now-restart</string>
+				<key>passinputasargument</key>
+				<true/>
+				<key>passvariables</key>
+				<true/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>A383CDDD-CA91-4D79-94F1-04D4E974B9B2</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>triggerid</key>
+				<string>watch-now-restart</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.external</string>
+			<key>uid</key>
+			<string>888535ED-1A0D-4A63-8201-393BD397B36B</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>484DE2C4-FDF5-4535-A4EC-D934C1A58DEA</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -174,21 +304,49 @@ I use Microsoft Edge for streaming but users should pick their favorite browser!
 		<key>1CFEEA2D-0D40-4D9E-8195-5DFB7D337160</key>
 		<dict>
 			<key>xpos</key>
-			<integer>595</integer>
+			<integer>855</integer>
 			<key>ypos</key>
 			<integer>215</integer>
+		</dict>
+		<key>484DE2C4-FDF5-4535-A4EC-D934C1A58DEA</key>
+		<dict>
+			<key>xpos</key>
+			<integer>230</integer>
+			<key>ypos</key>
+			<integer>480</integer>
+		</dict>
+		<key>888535ED-1A0D-4A63-8201-393BD397B36B</key>
+		<dict>
+			<key>xpos</key>
+			<integer>35</integer>
+			<key>ypos</key>
+			<integer>450</integer>
+		</dict>
+		<key>A383CDDD-CA91-4D79-94F1-04D4E974B9B2</key>
+		<dict>
+			<key>xpos</key>
+			<integer>860</integer>
+			<key>ypos</key>
+			<integer>430</integer>
 		</dict>
 		<key>B400BCE4-1E6F-4346-9F29-A7A21A377F39</key>
 		<dict>
 			<key>xpos</key>
-			<integer>320</integer>
+			<integer>430</integer>
 			<key>ypos</key>
 			<integer>215</integer>
+		</dict>
+		<key>B7AE549E-EB28-4518-88A7-842B3E7E9760</key>
+		<dict>
+			<key>xpos</key>
+			<integer>675</integer>
+			<key>ypos</key>
+			<integer>235</integer>
 		</dict>
 		<key>CD01D83F-EF8D-47BE-BAD9-A94DCF2DECC4</key>
 		<dict>
 			<key>xpos</key>
-			<integer>60</integer>
+			<integer>155</integer>
 			<key>ypos</key>
 			<integer>215</integer>
 		</dict>
@@ -201,7 +359,7 @@ I use Microsoft Edge for streaming but users should pick their favorite browser!
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.1</string>
+	<string>1.2</string>
 	<key>webaddress</key>
 	<string>https://github.com/dverb20</string>
 </dict>

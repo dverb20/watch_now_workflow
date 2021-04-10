@@ -10,12 +10,20 @@ ROTTEN_TOMATOES_SEARCH_URL = 'http://rottentomatoes.com/search/?search='
 def main(wf):
     streams = os.environ['streamoptions']
 
-    imdbId = search_omdb_info(os.environ['movie'],os.environ['year'],os.environ['type'])
+    imdbId = search_omdb_info(os.environ['title'],os.environ['year'],os.environ['type'])
     omdb_info = get_omdb_info(imdbId)
     if omdb_info['Response'] == 'False':
         wf.add_item(title='Ratings details not found.')
     else:
         #omdb_info = omdb_info['Search'][1]
+        #Add back button
+        wf.add_item(title='Go back',
+                    icon='img/back.png',
+                    valid=True,
+                    arg='go-back',
+                    copytext="Why did you copy this?"
+                    )
+
         search_url = IMDB_URL + 'title/' + str(omdb_info['imdbID'])
         if omdb_info['imdbRating'] != 'N/A':
             wf.add_item(title=omdb_info['imdbRating'],

@@ -40,7 +40,7 @@ def main(wf):
                 icon=iconPath
             )
             r.setvar('streamoptions',json.dumps(newItems))
-            r.setvar('movie',r.title)
+            r.setvar('title',r.title)
             r.setvar('year',releaseYear)
             r.setvar('type',type)
 
@@ -49,15 +49,19 @@ def main(wf):
 def formatJsonItems(streams):
     items = []
     providers = getProviders()
+    providerIds = [prov['id'] for prov in providers]
     for s in streams:
-        if s['monetization_type'] == "flatrate" and s['presentation_type'] in presentation:
-            providerIds = [prov['id'] for prov in providers]
+        if s['presentation_type'] in presentation:
             if s['provider_id'] in providerIds:
                 provInfo = getProviderById(providers,s['provider_id'])
+                if s['monetization_type'] == "flatrate":
+                    type = "Subscription"
+                else:
+                    type = s['monetization_type']
                 stream = {
                     'uid': s['provider_id'],
                     'title': provInfo['name'],
-                    'subtitle': "Quality "+s['presentation_type'].upper(),
+                    'subtitle': "Quality "+s['presentation_type'].upper()+", "+type.upper(),
                     'arg': s['urls']['standard_web'],
                     'valid': "true",
                     'icon': provInfo['iconpath'],
@@ -94,7 +98,22 @@ def getProviders():
             'name': "Hulu",
             'id': 15,
             'iconpath': 'img/hulu.png'
-        }
+        },
+        {
+            'name': "Apple +",
+            'id': 350,
+            'iconpath': 'img/appleplus.png'
+        },
+        {
+            'name': "Peacock",
+            'id': 386,
+            'iconpath': 'img/peacock.png'
+        },
+        {
+            'name': "Peacock Premium",
+            'id': 387,
+            'iconpath': 'img/peacock.png'
+        },
     ]
 
 def getProviderById(providers, value):
