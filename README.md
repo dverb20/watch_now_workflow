@@ -14,7 +14,7 @@ Alfred workflow to find streaming services for any movie or series
 - Built using deanishe's [helper library](https://github.com/deanishe/alfred-workflow) for Alfred workflow development.
 - [Alfred](https://alfredapp.com/)!
 
-##Icon Attributions
+## Icon Attributions
 - Most icons are from [flaticon.com](flaticon.com)
 - Iconixar
 - Freepik

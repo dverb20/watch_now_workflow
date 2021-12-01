@@ -18,6 +18,8 @@ def main(wf):
     if len(response['items']) is 0:
         wf.add_item(title='No titles were found. Try another query')
     else:
+        # setting newItems to "" here prevents an error when searchig for Lassie (e.g. watch Lassie)
+        newItems = ""
         for r in response['items']:
             if 'offers' in r:
                 newItems = formatJsonItems(r['offers'])
@@ -74,6 +76,16 @@ def formatJsonItems(streams):
 
 def getProviders():
     return [
+        {
+            'name': "DirecTV",
+            'id': 358,
+            'iconpath': 'img/directv.png'
+        },
+        {
+            'name': "YouTube",
+            'id': 192,
+            'iconpath': 'img/youtube.png'
+        },
         {
             'name': "Disney Plus",
             'id': 337,
